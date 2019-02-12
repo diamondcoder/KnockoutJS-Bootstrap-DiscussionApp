@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "kuchacha", "kuchacha\", "{961CB088-BF1F-4EA6-8A7F-CE1ACAFE95BE}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58905"
+		Debug.AspNetCompiler.PhysicalPath = "kuchacha\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58905\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58905"
+		Release.AspNetCompiler.PhysicalPath = "kuchacha\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58905\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "58905"
+		SlnRelativePath = "kuchacha\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8F8D807-AEBA-4A45-BFF0-E23EFDFCCD98}"
+	ProjectSection(SolutionItems) = preProject
+		pm.html = pm.html
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{961CB088-BF1F-4EA6-8A7F-CE1ACAFE95BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961CB088-BF1F-4EA6-8A7F-CE1ACAFE95BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5DB6AA4A-65BD-4613-9F39-3ACD9B9C635B}
+	EndGlobalSection
+EndGlobal

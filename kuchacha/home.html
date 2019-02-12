@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Getting Started with KnockOut</title>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/knockout-3.4.2.debug.js"></script>
+    <script src="Scripts/home.js"></script>
+
+
+</head>
+
+<body>
+    Product Price: <input type="text" data-bind="value: productPrice" />
+    Product Quantity: <input type="text" data-bind="value: productQty" />
+
+    <p>Total Price: <span data-bind="text: totalAmt"></span></p>
+
+    <h1>Let us plan a group gift for <span style="color:#0094ff;" data-bind="text :partyPerson"></span></h1>
+    <div>
+        <p>Party Organiser <span style="color:#ff0000; font-size: 16px;" data-bind="text :partyOrganiser"></span></p>
+    </div>
+
+    <div>List of Product (<span data-bind="text: products().length"></span>)</div>
+    <ul data-bind="foreach: products">
+        <li>
+            <span data-bind="text:name"></span>
+            <span data-bind="text:price"></span>
+            <a href="#" data-bind="click: $root.removeProduct"> Add to Wishes </a>
+        </li>
+
+    </ul>
+    <div>List of Group Wishes </div>
+
+    <!-- ko if: GroupIdeas().length >0-->
+    <ul data-bind="foreach: GroupIdeas">
+        <li>
+            <span data-bind="text: member"></span>  |
+            <span data-bind="text: name"></span> |
+            <span data-bind="text: price"></span>
+
+            <input type="button" value="Removethis" data-bind="click: $root.RemoveIdea" />
+            <input type="button" value="Vote UP" data-bind="click: $root.voteUpThis" />
+        </li>
+
+    </ul>
+    <!-- /ko -->
+    <ul  data-bind="if: GroupIdeas().length === 0">
+        <li>Be the first to select a wish</li>
+    </ul>
+    
+    <div>List of Group members</div>
+</body>
+</html>

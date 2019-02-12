@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Getting Started with KnockOut</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/app.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/knockout-3.4.2.debug.js"></script>
+    <script src="Scripts/home.js"></script>
+
+    <script src="Scripts/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+    <header class="container-fluid"><h1>Group Gifting Application</h1></header>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Let us plan a group gift for <span style="color:#0094ff;" data-bind="text :partyPerson"></span></h1>
+            
+
+        </div>
+        <div class="row">
+            
+            <h5>
+                 Party Organiser <span style="color:#ff0000; font-size: 16px;" data-bind="text :partyOrganiser"></span>
+            </h5>
+
+        </div>
+        <div class="row">
+
+            <aside class="col-sm-2">
+
+
+                <h3>Items (<span data-bind="text: products().length"></span>)</h3>
+                <div data-bind="foreach: products">
+                    <article>
+                        <img width="100" data-bind="attr:{src: url}" />
+                        <span data-bind="text:name"></span>
+                        <span data-bind="text:price"></span>
+                        <a href="#" data-bind="click: $root.removeProduct"> Add to Wishes </a>
+                    </article>
+
+                </div>
+            </aside>
+
+            <section class="col-sm-8">
+                <h3>Group Wishes </h3>
+
+                <!-- ko if: GroupIdeas().length >0-->
+                <div data-bind="foreach: GroupIdeas">
+                    
+                    <article>
+                        <h2><span data-bind="text: name"></span> </h2>
+                        <div class="row">
+                            <p class="col-sm-4">
+                                <img width="100" data-bind="attr:{src: url}" />
+                            </p>
+
+                            <p class="col-sm-6">
+                                Item price is : <span data-bind="text: price"></span>
+                                <br />
+                                selected by: <span data-bind="text: member"></span>
+                                <br />
+                                Item Votes: <span data-bind="text: votes"></span>
+                            </p>
+
+
+                            
+                        </div>
+                        <div class="row">
+                            <p>
+                                <input type="button" value="Delete" data-bind="click: $root.RemoveIdea" />
+                                <input type="button" value="Comment" />
+                                <input type="button" value="Vote UP" data-bind="click: $root.voteup" />
+                               newvote <span data-bind="newvotes"></span>
+                            </p>
+                        </div>
+                    </article>
+                    
+
+                </div>
+                <!-- /ko -->
+                <ul data-bind="if: GroupIdeas().length === 0">
+                    <li>Be the first to select a wish</li>
+                </ul>
+            </section>
+
+            <aside class="col-sm-2">
+                <h4>Group members</h4>
+                <ul data-bind="foreach: GroupMember">
+                    <li> <span data-bind="text: member"></span> is a  <span data-bind="text: relation"> </span></li>
+                </ul>
+
+            </aside>
+
+        </div>
+
+
+        <div class="row">
+            <aside class="col-3"> one </aside>
+            <section class="col-6"> two </section>
+            <aside class="col-3"> three</aside>
+        </div>
+
+
+    </div>
+
+
+
+
+        <footer class="container-fluid"><h1>Footer</h1></footer>
+</body>
+</html>
