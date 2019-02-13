@@ -6,6 +6,7 @@ $(function () {
     var viewModel = {
         productPrice: ko.observable(89),
         productQty: ko.observable(2),
+        newvotes: ko.observable(),
 
         products: ko.observableArray([
             { name: "shoe", price: "788", id: 1, url:"https://ae01.alicdn.com/kf/HTB1BXxSwOCYBuNkHFCcq6AHtVXaL/Summer-Women-s-Sandals-Bohemia-Gladiator-Sandal-Women-Shoes-Flip-Flops-Sandalias-Mujer-Ladies-Shoe-Fashion.jpg_640x640.jpg" },
@@ -50,9 +51,10 @@ $(function () {
     viewModel.removeProduct = function (product) {
         console.log(product.id);
        viewModel.GroupIdeas.push({ 
-           name: product.name, id: product.id, price: product.price, url: product.url, member: viewModel.loginUser, votes: Math.floor( Math.random() +1)
+           name: product.name, id: product.id, price: product.price, url: product.url, member: viewModel.loginUser, votes: ko.observable(0)
            //create an object of observables from gift Idea constructor
-       });
+        });
+       
        // viewModel.GroupIdeas.add({ member: "Akuba", relation: "friend", id: 1 });
         viewModel.products.remove(function ( item ) {
         
@@ -68,8 +70,11 @@ $(function () {
     }
 
     viewModel.voteup = function (idea) {
-        alert(idea.votes);
-        viewModel.newvotes = ko.pureComputed({
+        // viewModel.idea.vote(parseInt(viewModel.idea.vote() + 1));
+        idea.votes(idea.votes()+1);
+        //console.log(idea.votes(9));
+
+       /* viewModel.newvotes = ko.pureComputed({
             read: function () {
                 return idea.votes;
                
@@ -79,7 +84,7 @@ $(function () {
                 
             },
             owner: this
-        });
+        });*/
 
     }
    
