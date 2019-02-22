@@ -7,6 +7,7 @@ $(function () {
         productPrice: ko.observable(89),
         productQty: ko.observable(2),
         newvotes: ko.observable(),
+        newComment: ko.observable("newcomment"),
 
         products: ko.observableArray([
             { name: "shoe", price: "788", id: 1, url:"https://ae01.alicdn.com/kf/HTB1BXxSwOCYBuNkHFCcq6AHtVXaL/Summer-Women-s-Sandals-Bohemia-Gladiator-Sandal-Women-Shoes-Flip-Flops-Sandalias-Mujer-Ladies-Shoe-Fashion.jpg_640x640.jpg" },
@@ -28,32 +29,36 @@ $(function () {
         ]),
         partyPerson: ko.observable("Ida"),
         partyOrganiser: ko.observable("Royce"),
-        loginUser: ko.observable("Davida"),
+        loginUser: ko.observable("Davida")
         //addProduct = function () { /* ... leave unchanged ... */ }
 
     };
+    
     function GiftIdea (product) {
         var self = this;
         self.name = ko.observable(product.name);
         self.id = ko.observable(product.id);
         self.price = ko.observable(product.price);
         self.url = ko.observable(product.url);
-        self.member = ko.observable(viewModel.loginUser);
-        votes.id = ko.observable(0);
-        /*This will be a contructor for every gift Idea 
-         * 
-         * */
+        self.member = ko.observable(viewModel.loginUser());
+        self.votes = ko.observable(0);
+        self.comments = ko.observableArray(["Perfect", "So cool", "Noway"
+        ]);
         
+        self.addComment = function () {
+                self.comments.push(viewModel.newComment());
+        }.bind(self);
 
-        
-        
     }
     viewModel.removeProduct = function (product) {
         console.log(product.id);
-       viewModel.GroupIdeas.push({ 
+        viewModel.GroupIdeas.push(
+            new GiftIdea(product)
+           /* { 
            name: product.name, id: product.id, price: product.price, url: product.url, member: viewModel.loginUser, votes: ko.observable(0)
            //create an object of observables from gift Idea constructor
-        });
+        }*/
+        );
        
        // viewModel.GroupIdeas.add({ member: "Akuba", relation: "friend", id: 1 });
         viewModel.products.remove(function ( item ) {
@@ -72,19 +77,7 @@ $(function () {
     viewModel.voteup = function (idea) {
         // viewModel.idea.vote(parseInt(viewModel.idea.vote() + 1));
         idea.votes(idea.votes()+1);
-        //console.log(idea.votes(9));
-
-       /* viewModel.newvotes = ko.pureComputed({
-            read: function () {
-                return idea.votes;
-               
-            },
-            write: function (value) {
-                value = parseInt(value + 1);
-                
-            },
-            owner: this
-        });*/
+     
 
     }
    

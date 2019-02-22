@@ -52,12 +52,12 @@
 
                 <!-- ko if: GroupIdeas().length >0-->
                 <div data-bind="foreach: GroupIdeas">
-                    
+
                     <article>
                         <h2><span data-bind="text: name"></span> </h2>
                         <div class="row">
                             <p class="col-sm-4">
-                                <img width="100" data-bind="attr:{src: url}" />
+                                <img width="100" height="200" data-bind="attr:{src: url}" />
                             </p>
 
                             <p class="col-sm-6">
@@ -65,28 +65,43 @@
                                 <br />
                                 selected by: <span data-bind="text: member"></span>
                                 <br />
+
                                 Item Votes: <span data-bind="text: votes"></span>
+                                <br />
+                                List of comments( <span data-bind="text: comments().length"></span>)
+                                <br />
+
+                                <span data-bind="foreach: comments">
+                                    <span data-bind="text: $data"> </span>
+                                    <br />
+                                </span>
+
                             </p>
 
 
-                            
+
                         </div>
                         <div class="row">
                             <p>
                                 <input type="button" value="Delete" data-bind="click: $root.RemoveIdea" />
-                                <input type="button" value="Comment" />
+
                                 <input type="button" value="Vote UP" data-bind="click: $root.voteup" />
-                              
+
                             </p>
                         </div>
+
                     </article>
-                    
 
                 </div>
+                <input type="text" data-bind="value: newComment" />
+                <input type="button" value="Comment" data-bind="click: $root.addComment" />
+
                 <!-- /ko -->
+                <!-- ko if: GroupIdeas().length ==0-->
                 <ul data-bind="if: GroupIdeas().length === 0">
                     <li>Be the first to select a wish</li>
                 </ul>
+                <!-- /ko -->
             </section>
 
             <aside class="col-sm-2">
