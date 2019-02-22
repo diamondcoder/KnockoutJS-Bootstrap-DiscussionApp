@@ -7,7 +7,7 @@ $(function () {
         productPrice: ko.observable(89),
         productQty: ko.observable(2),
         newvotes: ko.observable(),
-        newComment: ko.observable("newcomment"),
+        newComment: ko.observable(6),
 
         products: ko.observableArray([
             { name: "shoe", price: "788", id: 1, url:"https://ae01.alicdn.com/kf/HTB1BXxSwOCYBuNkHFCcq6AHtVXaL/Summer-Women-s-Sandals-Bohemia-Gladiator-Sandal-Women-Shoes-Flip-Flops-Sandalias-Mujer-Ladies-Shoe-Fashion.jpg_640x640.jpg" },
@@ -46,7 +46,7 @@ $(function () {
         ]);
         
         self.addComment = function () {
-                self.comments.push(viewModel.newComment());
+            self.comments.push(viewModel.newComment());
         }.bind(self);
 
     }

@@ -87,15 +87,16 @@
 
                                 <input type="button" value="Vote UP" data-bind="click: $root.voteup" />
 
+                                <input type="button" value="Give aComment" data-bind="click: addComment" />
+
                             </p>
                         </div>
 
                     </article>
 
                 </div>
+                <!--The comment text box doesnt work if it is adddes to the buttons up because they are in the foreach call-->
                 <input type="text" data-bind="value: newComment" />
-                <input type="button" value="Comment" data-bind="click: $root.addComment" />
-
                 <!-- /ko -->
                 <!-- ko if: GroupIdeas().length ==0-->
                 <ul data-bind="if: GroupIdeas().length === 0">
