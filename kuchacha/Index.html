@@ -3,7 +3,8 @@
 <head>
 
     <title>Getting Started with KnockOut</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/app.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.3.1.min.js"></script>
@@ -20,13 +21,13 @@
     <div class="container-fluid">
         <div class="row">
             <h1>Let us plan a group gift for <span style="color:#0094ff;" data-bind="text :partyPerson"></span></h1>
-            
+
 
         </div>
         <div class="row">
-            
+
             <h5>
-                 Party Organiser <span style="color:#ff0000; font-size: 16px;" data-bind="text :partyOrganiser"></span>
+                Party Organiser <span style="color:#ff0000; font-size: 16px;" data-bind="text :partyOrganiser"></span>
             </h5>
 
         </div>
@@ -41,7 +42,7 @@
                         <img width="100" data-bind="attr:{src: url}" />
                         <span data-bind="text:name"></span>
                         <span data-bind="text:price"></span>
-                        <a href="#" data-bind="click: $root.removeProduct"> Add to Wishes </a>
+                        <a href="#" data-bind="click: $root.selectIdeaProduct"> Add to Wishes </a>
                     </article>
 
                 </div>
@@ -70,33 +71,34 @@
                                 <br />
                                 List of comments( <span data-bind="text: comments().length"></span>)
                                 <br />
+                               
 
                                 <span data-bind="foreach: comments">
                                     <span data-bind="text: $data"> </span>
                                     <br />
                                 </span>
 
-                            </p>
 
 
 
-                        </div>
+</div>
                         <div class="row">
                             <p>
                                 <input type="button" value="Delete" data-bind="click: $root.RemoveIdea" />
 
                                 <input type="button" value="Vote UP" data-bind="click: $root.voteup" />
 
-                                <input type="button" value="Give aComment" data-bind="click: addComment" />
+                                
 
                             </p>
+                            <p>  <input type="text" data-bind="value: newComment" placeholder="write a comment" /> <input type="button" value="Give a comment" data-bind="click: $root.addComment" /></p>
+                           
                         </div>
 
                     </article>
 
                 </div>
-                <!--The comment text box doesnt work if it is adddes to the buttons up because they are in the foreach call-->
-                <input type="text" data-bind="value: newComment" />
+                
                 <!-- /ko -->
                 <!-- ko if: GroupIdeas().length ==0-->
                 <ul data-bind="if: GroupIdeas().length === 0">
@@ -128,6 +130,6 @@
 
 
 
-        <footer class="container-fluid"><h1>Footer</h1></footer>
+    <footer class="container-fluid"><h1>Footer</h1></footer>
 </body>
 </html>
