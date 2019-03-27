@@ -62,20 +62,48 @@ $(function () {
         
             }
 
-            viewModel.RemoveIdea = function (idea) {
-                viewModel.GroupIdeas.remove(function (item) {
-                    return item.id === idea.id;
-                });
+    viewModel.RemoveIdea = function (idea) {
+        $('#exampleModal').modal('show');
+               
+    }
+
+    viewModel.RemoveIdeaYes = function (idea) {
+       // $('#exampleModal').modal('toggle');
+        var p = new Promise((resolve, reject) => {
+
+            if (idea) {
+                resolve($('#exampleModal').modal('toggle'))
+            } else {
+                reject('Failed');
             }
+
+        })
+        p.then((message) => {
+            console.log(message);
+            viewModel.GroupIdeas.remove(function (item) {
+                return item.id === idea.id;
+            })
+        } ).catch((message) => {
+                console.log(message);
+            })
+            
+            
+       
+    }
 
             viewModel.voteup = function (idea) {
                 idea.votes(idea.votes()+1);
             }
 
             viewModel.addComment = function (idea) {
-                var text=idea.newComment();
-                idea.comments.push(text);
-                idea.newComment("");
+                var text = idea.newComment();
+                if (text) {
+                    idea.comments.push(text);
+                    idea.newComment("");
+                }
+                else {
+                    alert("enter message first loves ones");
+                }
             };
    
    

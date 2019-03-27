@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/app.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/knockout-3.4.2.debug.js"></script>
     <script src="Scripts/home.js"></script>
@@ -71,7 +72,7 @@
                                 <br />
                                 List of comments( <span data-bind="text: comments().length"></span>)
                                 <br />
-                               
+
 
                                 <span data-bind="foreach: comments">
                                     <span data-bind="text: $data"> </span>
@@ -81,24 +82,43 @@
 
 
 
-</div>
+                        </div>
                         <div class="row">
                             <p>
-                                <input type="button" value="Delete" data-bind="click: $root.RemoveIdea" />
-
-                                <input type="button" value="Vote UP" data-bind="click: $root.voteup" />
-
+                                <input type="button" class="btn btn-primary" value="Delete" data-bind="click: $root.RemoveIdea" />
                                 
-
+                                
                             </p>
-                            <p>  <input type="text" data-bind="value: newComment" placeholder="write a comment" /> <input type="button" value="Give a comment" data-bind="click: $root.addComment" /></p>
-                           
+
+                            <p>  
+                             <input class="form-group rounded pl-1 ml-3" type="text" data-bind="value: newComment" placeholder="write a comment" /> <input type="button" class="btn btn-primary" value="Give a comment" data-bind="click: $root.addComment" /> <a href="#" class="btn btn-primary">
+    <span class="" data-bind="click: $root.voteup">Vote UP <span data-bind="text: votes"></span> </span>
+</a></p>
+                            <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">confirm delete</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete  <span data-bind="text: name"></span>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary" data-bind="click: $root.RemoveIdeaYes">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </article>
 
                 </div>
-                
+
                 <!-- /ko -->
                 <!-- ko if: GroupIdeas().length ==0-->
                 <ul data-bind="if: GroupIdeas().length === 0">
@@ -116,7 +136,7 @@
             </aside>
 
         </div>
-
+       
 
         <div class="row">
             <aside class="col-3"> one </aside>
