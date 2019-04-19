@@ -3,11 +3,12 @@
 
 
 $(function () {
-
+  
     var viewModel = {
         productPrice: ko.observable(89),
         productQty: ko.observable(2),
         newvotes: ko.observable(),
+        itemToDelete: ko.observable(),
         //newComment: ko.observable("new comment"),
 
         products: ko.observableArray([
@@ -50,7 +51,7 @@ $(function () {
 
 
             viewModel.selectIdeaProduct = function (product) {
-                console.log(product.id);
+              
 
                 viewModel.GroupIdeas.push(
                     new GiftIdea(product)
@@ -64,22 +65,27 @@ $(function () {
 
     viewModel.RemoveIdea = function (idea) {
         $('#exampleModal').modal('show');
+        
+       
                
     }
 
     viewModel.RemoveIdeaYes = function (idea) {
-       // $('#exampleModal').modal('toggle');
+      // $('#exampleModal').modal('toggle');
+       // viewModel.GroupIdeas.remove(this)
+        
         var p = new Promise((resolve, reject) => {
 
             if (idea) {
-                resolve($('#exampleModal').modal('toggle'))
+                resolve($('#exampleModal').modal('toggle'));
             } else {
                 reject('Failed');
             }
 
         })
         p.then((message) => {
-            console.log(message);
+            //console.log(idea.name());
+            viewModel.itemToDelete(idea.name());
             viewModel.GroupIdeas.remove(function (item) {
                 return item.id === idea.id;
             })
