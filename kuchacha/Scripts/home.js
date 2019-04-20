@@ -3,12 +3,12 @@
 
 
 $(function () {
-  
+  //AIzaSyC9iDMfjdRqXWJJrRWsyns7RC6lRwxEKT4
     var viewModel = {
         productPrice: ko.observable(89),
         productQty: ko.observable(2),
         newvotes: ko.observable(),
-        itemToDelete: ko.observable(),
+        itemToDelete: ko.observable(undefined),
         //newComment: ko.observable("new comment"),
 
         products: ko.observableArray([
@@ -52,7 +52,6 @@ $(function () {
 
             viewModel.selectIdeaProduct = function (product) {
               
-
                 viewModel.GroupIdeas.push(
                     new GiftIdea(product)
                 );
@@ -63,17 +62,21 @@ $(function () {
         
             }
 
-    viewModel.RemoveIdea = function (idea) {
-        $('#exampleModal').modal('show');
-        
+    viewModel.RemoveIdea = function () {
+
+        $('#exampleModal').modal('toggle');
+        //viewModel.itemToDelete(idea.name());
+        viewModel.GroupIdeas.remove(viewModel.itemToDelete());
        
-               
     }
 
     viewModel.RemoveIdeaYes = function (idea) {
-      // $('#exampleModal').modal('toggle');
+
+        viewModel.itemToDelete(idea);
+       
+      $('#exampleModal').modal('show');
        // viewModel.GroupIdeas.remove(this)
-        
+        /*
         var p = new Promise((resolve, reject) => {
 
             if (idea) {
@@ -85,17 +88,25 @@ $(function () {
         })
         p.then((message) => {
             //console.log(idea.name());
-            viewModel.itemToDelete(idea.name());
-            viewModel.GroupIdeas.remove(function (item) {
-                return item.id === idea.id;
-            })
+            viewModel.RemoveIdea(idea);
+           
         } ).catch((message) => {
                 console.log(message);
-            })
+            })*/
             
             
        
     }
+
+    viewModel.deletedItemName = ko.pureComputed(function () {
+        if (viewModel.itemToDelete !== undefined) {
+            return this.itemToDelete().name;
+        } 
+        
+        }
+        )
+
+    
 
             viewModel.voteup = function (idea) {
                 idea.votes(idea.votes()+1);
