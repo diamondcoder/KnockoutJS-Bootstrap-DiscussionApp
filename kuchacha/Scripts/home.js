@@ -5,6 +5,7 @@
 $(function () {
   //AIzaSyC9iDMfjdRqXWJJrRWsyns7RC6lRwxEKT4
     var viewModel = {
+        //self : this,
         productPrice: ko.observable(89),
         productQty: ko.observable(2),
         newvotes: ko.observable(),

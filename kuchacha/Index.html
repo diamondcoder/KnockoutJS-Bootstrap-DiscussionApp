@@ -5,6 +5,7 @@
     <title>Getting Started with KnockOut</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/app.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -85,7 +86,9 @@
                         </div>
                         <div class="row">
                             <p>
-                                <input type="button" class="btn btn-primary" value="Delete" data-bind="click: $root.RemoveIdeaYes" />
+                                <button type="button" class="btn btn-primary" data-bind="click: $root.RemoveIdeaYes">
+                                    <i class="fa fa-trash"></i>
+                                </button>
 
 
 
@@ -93,11 +96,12 @@
 
                             <p>
 
-                                <input class="form-group rounded pl-1 ml-3" type="text" data-bind="value: newComment" placeholder="write a comment" required /> <button class="btn btn-primary" data-bind="click: $root.addComment"> comment </button>
+                                <input class="form-group rounded pl-1 ml-3" type="text" data-bind="value: newComment" placeholder="write a comment" required /> <button class="btn btn-primary" data-bind="click: $root.addComment"> Add </button>
 
-                                <button class="btn btn-primary">
-                                    <span class="" data-bind="click: $root.voteup">Vote </span> 
-                                 <span class="badge" data-bind="text: votes">7</span></button>
+                         <button class="btn btn-primary" data-bind="click: $root.voteup">
+                         <i class="fa fa-thumbs-up"></i> 
+                        </button>
+                                 <span class="badge" data-bind="text: votes">7</span>
                             </p>
 
                         </div>
@@ -126,7 +130,7 @@
 
 
         <div class="row">
-            <aside class="col-3"> one </aside>
+            <aside class="col-3"> </aside>
             <section class="col-6"> two </section>
             <aside class="col-3"> three</aside>
         </div>
@@ -155,6 +159,6 @@
                               </div>
 
 
-    <footer class="container-fluid"><h1>Footer</h1></footer>
+    <footer class="container-fluid"><h1>&copy; rights reserved</h1>  </footer>
 </body>
 </html>
